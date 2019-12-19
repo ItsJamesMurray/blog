@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Me from '../views/Me.vue'
 import Contact from '../views/Contact.vue'
+import Blog from '../views/Blog.vue'
 
 Vue.use(VueRouter)
 
@@ -13,14 +13,15 @@ const routes = [
     component: Home
   },
   {
-    path: '/me',
-    name: 'me',
-    component: Me
-  },
-  {
     path: '/contact',
     name: 'contact',
     component: Contact
+  },
+  {
+    path: '/blog/:post?',
+    name: 'blog',
+    props: true,
+    component: Blog
   }
 ]
 

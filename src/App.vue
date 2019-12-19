@@ -1,7 +1,10 @@
 <template>
   <div id="app" class="">
     <Navbar />
-    <router-view class="pt-16 min-h-screen"/>
+    <router-view
+      class="pt-16 min-h-screen"
+      :class="darkMode ? 'bg-gray-800 text-gray-200':''"
+      />
     <Footer />
   </div>
 </template>
@@ -16,6 +19,16 @@ export default {
   components: {
     Navbar,
     Footer
+  },
+  computed: {
+    darkMode () {
+      return this.$store.state.darkMode.darkMode
+    }
+  },
+  created() {
+    if(Object.keys(this.$store.state.blogPosts.blogPosts === 0)) {
+      this.$store.dispatch('loadPosts')
+    }
   }
 }
 </script>

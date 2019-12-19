@@ -1,18 +1,18 @@
 <template>
-  <div 
-    class="w-full h-auto pin-b py-6"
+  <div
+    class="h-auto pin-b py-6 flex flex-col float-right w-full pl-12"
     :class="darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white'">
-    <div class="text-center flex pb-6 ml-32">
+    <div class="text-center flex pb-6">
       <ul v-for="(item, idx) in footerItems"
         :key="idx"
-        class="text-left mr-16"
+        class="text-left mr-16 text-sm"
       >
         <li class="font-black text-md">
           <a :href="item.link">{{ item.name }}</a>
         </li>
       </ul>
     </div>
-    <p class="text-gray-500 text-xs mx-32">&copy;2019 ItsJamesMurray. All rights reserved.</p>
+    <p class="text-gray-500 text-xs ">Made with ❤️by James Murray in Chicago 🏙️</p>
   </div>
 </template>
 <script>
@@ -31,7 +31,7 @@ export default {
         },
         {
           name: 'Newsletters',
-          link: 'https://www.itsjamesmurray/contact'
+          link: '/contact'
         },
         {
           name: 'RSS',

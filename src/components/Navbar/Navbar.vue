@@ -1,31 +1,44 @@
 <template>
-  <div 
-    :class="darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white'"
-    class="fixed w-full shadow flex items-center justify-between px-32 h-16 text-lg border-b-4 font-bold border-transparent">
-    <div class="flex items-center w-2/3">
-      <router-link to="/">
-        <span class="text-3xl pr-4 align-middle">👋</span>
-        <span>ItsJamesMurray</span>
-      </router-link>
+  <div
+    :class="[darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white', isOpen ? 'h-auto' : 'flex justify-between h-16']"
+    class="fixed w-full shadow items-center px-12 sm:px-32 text-lg border-b-4 font-bold border-transparent">
+    <div class="flex justify-between w-5/6 sm:w-2/3">
+      <div class="">
+        <router-link to="/" class="flex items-center">
+          <span class="text-3xl sm:pr-4">👋</span>
+          <span class="sm:block" :class="isOpen ? 'pl-4': 'hidden'">ItsJamesMurray</span>
+        </router-link>
+      </div>
+      <button type="button"
+        class="block sm:hidden hover:text-gray-600 "
+        :class="darkMode ? 'nav-transition-dark' : 'nav-transition-light'"
+        @click="isOpen = !isOpen">
+        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+          <path v-if="isOpen" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
+          <path v-else fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+        </svg>
+      </button>
     </div>
-    <div class="flex items-center w-1/3 justify-end">
+    <div class="block sm:flex items-center justify-end"
+      :class="isOpen ? 'inline-block w-full' : 'hidden'">
       <div v-for="(item, idx) in navItems"
         :key="idx"
-        :class="darkMode ? 'nav-transition-dark' : 'nav-transition-light' "
-        class="nav-transition pl-4">
+        :class="[darkMode ? 'nav-transition-dark' : 'nav-transition-light', isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : '' ]"
+        class="nav-transition sm:pl-4">
         <router-link :to="item.routePath">
             {{item.text}}
         </router-link>
       </div>
       <div v-for="(link, idx) in navLinkItems"
         :key="idx+100"
-        class="text-3xl pl-4">
+        class="text-3xl sm:pl-4"
+        :class="isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : ''">
         <a :href="link.url" target="_blank">
           {{ link.img }}
         </a>
       </div>
-      <Toggle  class="ml-4"/>
     </div>
+      <Toggle class="ml-4 mb-2"/>
   </div>
 </template>
 
@@ -34,20 +47,20 @@ import Toggle from '@/components/Toggle/Toggle'
 
 export default {
   name: 'Navbar',
+  data() {
+    return{
+      isOpen: false
+    }
+  },
   components: {
     Toggle
   },
   computed: {
      darkMode () {
-      return this.$store.state.darkMode.darkMode
-    },
+       return this.$store.state.darkMode.darkMode
+       },
     navItems () {
       return [
-        {
-          text: 'Me',
-          routePath: '/me',
-          routeName: 'Me'
-        },
         {
           text: 'Blog',
           routePath: '/blog',
@@ -80,13 +93,15 @@ export default {
 }
 </script>
 <style scoped>
+
 .nav-transition:after {
-  display:block;
+  display: block;
   content: '';
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
   @apply border-b-4;
 }
+
 .nav-transition:hover:after {
   transform: scaleX(1);
 }
