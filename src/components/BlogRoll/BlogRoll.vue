@@ -5,7 +5,8 @@
       :class="darkMode ? 'hover:bg-gray-900':'hover:bg-gray-200'"
       @click="navToPost()">
       <div class="sm:w-1/12">
-        <img v-for="(image, idx) in post.fields.Image"
+        <img v-if="!post.fields.Image" src="@/assets/img/me.png" class="rounded h-10 w-10"/>
+        <img v-else v-for="(image, idx) in post.fields.Image"
           :key=idx+100
           :src=image.thumbnails.large.url
           class="rounded h-10"

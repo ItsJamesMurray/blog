@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-auto pin-b py-6 flex flex-col float-right w-full pl-12"
+    class="h-auto pin-b py-6 flex flex-col float-right w-full pl-4 sm:pl-12"
     :class="darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white'">
     <div class="text-center flex pb-6">
       <ul v-for="(item, idx) in footerItems"

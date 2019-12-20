@@ -20,20 +20,22 @@
       </button>
     </div>
     <div class="block sm:flex items-center justify-end"
-      :class="isOpen ? 'inline-block w-full' : 'hidden'">
+      :class="isOpen ? 'block' : 'hidden'">
       <div v-for="(item, idx) in navItems"
         :key="idx"
         :class="[darkMode ? 'nav-transition-dark' : 'nav-transition-light', isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : '' ]"
-        class="nav-transition sm:pl-4">
-        <router-link :to="item.routePath">
+        class="nav-transition sm:pl-4  m-auto"
+        @click="isOpen = false">
+        <router-link :to="item.routePath" class="flex justify-center py-2" >
             {{item.text}}
         </router-link>
       </div>
       <div v-for="(link, idx) in navLinkItems"
         :key="idx+100"
-        class="text-3xl sm:pl-4"
-        :class="isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : ''">
-        <a :href="link.url" target="_blank">
+        class="text-3xl sm:pl-4  m-auto"
+        :class="isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : ''"
+        @click="isOpen = false">
+        <a :href="link.url" target="_blank" class="flex justify-center">
           {{ link.img }}
         </a>
       </div>

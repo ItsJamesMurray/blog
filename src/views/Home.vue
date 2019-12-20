@@ -5,18 +5,18 @@
       class=" flex justify-center pt-8">
       <div class="w-3/4">
       <hr class=" w-full mt-2 flex justify-center">
-        <div class="flex flex-row justify-between items-center  py-4">
-          <div class="flex w-1/2">
+        <div class="flex sm:flex-row flex-col justify-between items-center py-4">
+          <div class="flex sm:w-1/2">
             <div class="font-black">
               <h2 class="text-5xl">Hi, I'm James.</h2>
               <span class="text-lg">I live in Chicago with my girlfriend 👫and pup 🐶. I spend my days at Google working with healthcare advertisers and my evenings trying to make millions 🚀.</span>
             </div>
           </div>
-          <div class="flex w-1/2 justify-center">
+          <div class="flex sm:w-1/2 justify-center">
           <img
             src="@/assets/img/me.png"
-            style="width:16rem"
-            class=""/>
+            style="width:16rem; height:16rem"
+            class="object-cover"/>
           </div>
         </div>
         <hr class=" w-full mt-2 flex justify-center">

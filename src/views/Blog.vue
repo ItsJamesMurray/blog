@@ -143,6 +143,7 @@ export default {
   border-left: 1rem solid #ecc94b;
   box-shadow: 0 0 .75rem #ecc94b;
   white-space: pre-wrap !important;
+  line-height: 1.25rem !important;
 }
 
 .post code {
@@ -151,8 +152,15 @@ export default {
   color:#ebf4ff;;
   width: 100% !important;
   white-space: pre-wrap !important;
+  line-height: 1.25rem !important;
+  @apply text-xs !important;
 }
 
+@screen sm {
+  .post code {
+    @apply text-base !important;
+  }
+}
 
 .post ul  {
   margin-left: 2rem;
