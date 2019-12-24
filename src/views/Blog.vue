@@ -1,6 +1,9 @@
 <template>
 <div class="py-24">
-  <div v-if="specificPost" class="px-12 sm:w-1/2 sm:p-0 flex-col m-auto">
+  <div v-if=loading>
+    <Loading />
+  </div>
+  <div v-else-if="specificPost" class="px-12 sm:w-1/2 sm:p-0 flex-col m-auto">
     <h1 class="text-4xl mt-8 font-black">{{post.fields.Title}}</h1>
     <hr class=w-full>
     <span>James Murray - {{moment(post.fields['Publish Date']).format('MMMM Do YYYY')}}</span>
@@ -30,11 +33,13 @@ import moment from 'moment'
 import Prism from 'prismjs';
 import marked from 'marked'
 import BlogRoll from '@/components/BlogRoll/BlogRoll'
+import Loading from '@/components/Loading/Loading'
 
 export default {
   name: 'blog',
   components: {
-    BlogRoll
+    BlogRoll,
+    Loading
    },
   data () {
     return {
@@ -78,6 +83,9 @@ export default {
     },
     markedPost () {
       return marked(this.$store.state.blogPosts.selectedPost.fields.Content)
+    },
+    loading () {
+      return this.$store.state.blogPosts.loading
     }
   }
 }
