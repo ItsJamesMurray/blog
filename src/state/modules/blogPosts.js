@@ -3,7 +3,8 @@ import axios from 'axios'
 const module = {
   state: {
     blogPosts: {},
-    selectedPost: {}
+    selectedPost: {},
+    loading: true
   },
   actions: {
     loadPosts({ commit }) {
@@ -47,9 +48,11 @@ const module = {
   mutations: {
     LOAD_POSTS: (state, blogPosts) => {
       state.blogPosts = blogPosts
+      state.loading = false
     },
     SELECT_POST: (state, post) => {
       state.selectedPost = post
+      state.loading = false
     }
   }
 }

@@ -40,7 +40,7 @@
         </a>
       </div>
     </div>
-      <Toggle class="ml-4 mb-2"/>
+      <Toggle class="m-auto ml-4 mb-4 mt-4"/>
   </div>
 </template>
 
