@@ -53,8 +53,29 @@ export default {
       title: `${this.post.fields.Title} by James Murray`,
       meta: [
         {
-          name: 'description',
-          content: this.post.fields.Description
+          property: 'og:title',
+          content: this.post.fields.Title,
+          vmid: 'og:title'
+        },
+        {
+          property: 'og:url',
+          content: `www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`,
+          vmid: 'og:url'
+        },
+        {
+          property: 'og:description',
+          content: this.post.fields.Description,
+          vmid: 'og:description'
+        },
+        {
+          property: 'og:type',
+          content: 'article',
+          vmid: 'og:type'
+        },
+        {
+          property: 'og:image',
+          content: 'www.itsjamesmurray.com/img/visionary.png',
+          vmid: 'og:image'
         }
       ]
     }
