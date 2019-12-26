@@ -76,7 +76,7 @@ export default {
    },
   metaInfo() {
     return {
-      title: 'I am a visionary - ItsJamesMurray',
+      title: 'I am a visionary! | ItsJamesMurray',
       meta: [
         {
           name: 'description',
