@@ -11,7 +11,7 @@ const module = {
       const baseKey = process.env.VUE_APP_AIRTABLE_BASE
       const apiKey = process.env.VUE_APP_AIRTABLE_API
       axios
-        .get(`https://api.airtable.com/v0/${baseKey}`,
+        .get(`https://api.airtable.com/v0/${baseKey}/Blog%20Posts`,
         {
           headers: {
             'Authorization': `Bearer ${apiKey}`
@@ -29,7 +29,7 @@ const module = {
       const baseKey = process.env.VUE_APP_AIRTABLE_BASE
       const apiKey = process.env.VUE_APP_AIRTABLE_API
       axios
-        .get(`https://api.airtable.com/v0/${baseKey}`,
+        .get(`https://api.airtable.com/v0/${baseKey}/Blog%20Posts`,
         {
           headers: {
             'Authorization': `Bearer ${apiKey}`

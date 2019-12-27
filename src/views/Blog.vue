@@ -48,17 +48,17 @@ export default {
       Prism: Prism
       }
   },
-  metaInfo() {
-    return {
-      title: `${this.post.fields.Title} by James Murray`,
-      meta: [
-        {
-          name: 'description',
-          content: this.post.fields.Description
-        }
-      ]
-    }
-  },
+  // metaInfo() {
+  //   return {
+  //     title: `${this.post.fields.Title} by James Murray`,
+  //     meta: [
+  //       {
+  //         name: 'description',
+  //         content: this.post.fields.Description
+  //       }
+  //     ]
+  //   }
+  // },
   created () {
     if(Object.keys(this.$store.state.blogPosts.selectedPost === 0)) {
       this.$store.dispatch('fetchPost', this.$route.params.post)
