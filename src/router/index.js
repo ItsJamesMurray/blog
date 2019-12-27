@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
 import Blog from '../views/Blog.vue'
+// import NotFound from '../views/NotFound.vue'
 import Meta from 'vue-meta'
 
 Vue.use(VueRouter)
@@ -24,12 +25,23 @@ const routes = [
     name: 'blog',
     props: true,
     component: Blog
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    components: {
+      default: () => import('@/views/NotFound.vue')
+    }
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: '/',
   routes,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
