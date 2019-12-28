@@ -12,8 +12,8 @@
           class="rounded h-10"
         />
       </div>
-      <div class="flex w-10/12 h-12">
-        <p class="pl-4 sm:text-xl font-bold my-auto truncate leading-none w-9/12">
+      <div class="flex w-10/12 h-16">
+        <p class="pl-4 sm:text-xl font-bold my-auto truncate leading-normal w-9/12">
           {{ post.fields.Title }}
         </p>
         <div class="flex w-3/12 m-auto truncate justify-end truncate">
