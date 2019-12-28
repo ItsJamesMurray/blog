@@ -54,11 +54,6 @@ export default {
       this.$store.dispatch('fetchPost', this.$route.params.post)
     }
   },
-  mounted () {
-    if(typeof this.$store.state.blogPosts.selectedPost === undefined) {
-      console.log('Logged')
-    }
-  },
   computed: {
     post () {
       return this.$store.state.blogPosts.selectedPost
