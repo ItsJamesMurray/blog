@@ -4,6 +4,7 @@ const module = {
   state: {
     blogPosts: {},
     selectedPost: {},
+    error: false,
     loading: true
   },
   actions: {
@@ -51,7 +52,11 @@ const module = {
       state.loading = false
     },
     SELECT_POST: (state, post) => {
-      state.selectedPost = post
+      if(post !== undefined) {
+        state.selectedPost = post
+      } else {
+        state.error = true
+      }
       state.loading = false
     }
   }

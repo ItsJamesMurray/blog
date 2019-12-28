@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
 import Blog from '../views/Blog.vue'
+import Post from '../views/Post.vue'
 // import NotFound from '../views/NotFound.vue'
 import Meta from 'vue-meta'
 
@@ -21,10 +22,15 @@ const routes = [
     component: Contact
   },
   {
-    path: '/blog/:post?',
+    path: '/blog',
     name: 'blog',
-    props: true,
     component: Blog
+  },
+  {
+    path: '/blog/:post',
+    name: 'post',
+    component: Post,
+    props: true
   },
   {
     path: '/404',
