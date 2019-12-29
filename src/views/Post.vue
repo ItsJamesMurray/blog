@@ -6,11 +6,8 @@
   <div v-else-if="typeof post != undefined" class="px-12 sm:w-1/2 sm:p-0 flex-col m-auto">
     <h1 class="text-4xl mt-8 font-black">{{post.fields.Title}}</h1>
     <hr class=w-full>
-    <span>James Murray - {{moment(post.fields['Publish Date']).format('MMMM Do YYYY')}}</span>
-    <br>
-    <div class = "post" v-html="markedPost"> {{ markedPost }} </div>
-    <br>
-    <br>
+    <span>James Murray - {{moment(post.fields['Publish Date']).format('MMMM Do YYYY')}}</span><br>
+    <div class = "post" v-html="markedPost"> {{ markedPost }} </div><br><br>
     <img
       src="@/assets/img/jimsig.png"
       style="height:4rem"
@@ -67,11 +64,6 @@ export default {
     loading () {
       return this.$store.state.blogPosts.loading
     }
-  },
-  updated () {
-      if (this.$store.state.blogPosts.error) {
-        this.$router.push('/404')
-      }
   }
 }
 </script>

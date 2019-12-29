@@ -1,35 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Contact from '../views/Contact.vue'
-import Blog from '../views/Blog.vue'
-import Post from '../views/Post.vue'
-// import NotFound from '../views/NotFound.vue'
-import Meta from 'vue-meta'
+// import Meta from 'vue-meta'
 
 Vue.use(VueRouter)
-Vue.use(Meta)
+// Vue.use(Meta)
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    components: {
+      default: () => import('@/views/Home.vue')
+    }
   },
   {
     path: '/contact',
     name: 'contact',
-    component: Contact
+    components: {
+      default: () => import('@/views/Contact.vue')
+    }
   },
   {
     path: '/blog',
     name: 'blog',
-    component: Blog
+    components: {
+      default: () => import('@/views/Blog.vue')
+    }
   },
   {
     path: '/blog/:post',
     name: 'post',
-    component: Post,
+    components: {
+      default: () => import('@/views/Post.vue')
+    },
     props: true
   },
   {

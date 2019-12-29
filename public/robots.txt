@@ -3,5 +3,9 @@ User-agent: Googlebot
 Disallow: /nogooglebot/
 
 # Group 2
+User-agent: Airtable
+Allow: /
+
+# Group 3
 User-agent: *
 Allow: /

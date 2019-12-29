@@ -4,7 +4,7 @@ const module = {
   state: {
     blogPosts: {},
     selectedPost: {},
-    error: false,
+    // error: false,
     loading: true
   },
   actions: {
@@ -54,8 +54,10 @@ const module = {
     SELECT_POST: (state, post) => {
       if(post !== undefined) {
         state.selectedPost = post
+        // state.error = false
       } else {
-        state.error = true
+        // state.error = true
+        this.$router.push('/404')
       }
       state.loading = false
     }
