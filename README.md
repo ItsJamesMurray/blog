@@ -6,7 +6,7 @@
 👋James' personal website using Vue CLI, TailwindCSS, Firebase, and Airtable.
 
 ## Note 📓
-I've made my code open source to inspire rookie programmers like myself to start learning.  I was amazed at how quickily things started to click together once I started building a project of my own.
+I've made my code open source to inspire rookie programmers like myself to start learning.  I was amazed at how quickly things started to click together once I started building a project of my own.
 
 I built this from the Vue CLI and added Tailwind CSS for styling.  All my blog posts are written in Airtable and pulled through their super user friendly API.  The site is hosted on Firebase.
 
