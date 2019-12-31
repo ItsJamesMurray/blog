@@ -10,7 +10,7 @@
         </router-link>
       </div>
       <button type="button"
-        class="block sm:hidden hover:text-gray-600 "
+        class="block mr-4 sm:hidden hover:text-gray-600 "
         :class="darkMode ? 'nav-transition-dark' : 'nav-transition-light'"
         @click="isOpen = !isOpen">
         <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@
         </svg>
       </button>
     </div>
-    <div class="block sm:flex items-center justify-end"
+    <div class="block mb-8 sm:flex items-center justify-end"
       :class="isOpen ? 'block' : 'hidden'">
       <div v-for="(item, idx) in navItems"
         :key="idx"
@@ -40,7 +40,7 @@
         </a>
       </div>
     </div>
-      <Toggle class="m-auto ml-4 mb-4 mt-4"/>
+      <Toggle class="m-auto fixed top-0 right-0 mr-12 mb-4 mt-4"/>
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
   name: 'Navbar',
   data() {
     return{
-      isOpen: false
+      isOpen: true
     }
   },
   components: {
