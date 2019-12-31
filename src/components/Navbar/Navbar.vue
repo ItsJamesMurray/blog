@@ -96,23 +96,24 @@ export default {
 </script>
 <style scoped>
 
-.nav-transition:after {
-  display: block;
-  content: '';
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
-  @apply border-b-4;
-}
+  .nav-transition:after {
+    display: block;
+    content: '';
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    @apply border-b-4;
+  }
 
-.nav-transition:hover:after {
-  transform: scaleX(1);
-}
+  .nav-transition:hover:after {
+    transform: scaleX(1);
+  }
 
-.nav-transition-light:after {
-  @apply border-gray-800;
-}
+  .nav-transition-light:after {
+    @apply border-gray-800;
+  }
 
-.nav-transition-dark:after {
-  @apply border-gray-200;
-}
+  .nav-transition-dark:after {
+    @apply border-gray-200;
+  }
+
 </style>

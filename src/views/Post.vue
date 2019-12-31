@@ -66,10 +66,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .invert {
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
   }
   .post p {
     margin: 1em 0;
