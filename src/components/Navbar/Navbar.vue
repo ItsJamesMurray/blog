@@ -1,9 +1,9 @@
 <template>
   <div
-    :class="[darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white', isOpen ? 'h-auto' : 'flex justify-between h-16']"
-    class="fixed w-full shadow items-center px-12 sm:px-32 text-lg border-b-4 font-bold border-transparent">
+    :class="[darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white', isOpen ? '' : 'flex justify-between']"
+    class="fixed w-full shadow items-center h-auto px-12 sm:px-32 text-lg font-bold border-t-8 border-yellow-500">
     <div class="flex justify-between w-5/6 sm:w-2/3">
-      <div class="">
+      <div class="my-1 h-12">
         <router-link to="/" class="flex items-center">
           <span class="text-3xl sm:pr-4">👋</span>
           <span class="sm:block" :class="isOpen ? 'pl-4': 'hidden'">ItsJamesMurray</span>
