@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[darkMode ? 'bg-gray-900 text-gray-200' : 'bg-white', isOpen ? '' : 'flex justify-between']"
-    class="fixed w-full shadow items-center h-auto px-12 sm:px-32 text-lg font-bold border-t-8 border-yellow-500">
+    class="fixed w-full shadow items-center h-auto px-12 sm:px-32 text-lg font-bold border-transparent">
     <div class="flex justify-between w-5/6 sm:w-2/3">
       <div class="my-1 h-12">
         <router-link to="/" class="flex items-center">

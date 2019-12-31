@@ -2,7 +2,7 @@
   <div id="app" class="">
     <Navbar />
     <router-view
-      class="pt-16 min-h-screen"
+      class="pt-12 min-h-screen"
       :class="darkMode ? 'bg-gray-800 text-gray-200':''"
       />
     <Footer />
