@@ -236,7 +236,7 @@ export default {
     border-radius: 3px;
     margin: 26px 0;
   }
-  pre code, pre tt {
+  .post pre code, .post pre tt {
     background-color: transparent;
     border: none;
   }
