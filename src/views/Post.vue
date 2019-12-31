@@ -19,7 +19,6 @@
 
 <script>
 import moment from 'moment'
-// import Prism from 'prismjs';
 import marked from 'marked'
 import Loading from '@/components/Loading/Loading'
 
@@ -31,8 +30,7 @@ export default {
   data () {
     return {
       moment: moment,
-      marked: marked,
-      // Prism: Prism
+      marked: marked
       }
   },
   // metaInfo() {
