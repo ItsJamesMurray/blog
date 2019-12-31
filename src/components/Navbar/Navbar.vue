@@ -19,7 +19,7 @@
         </svg>
       </button>
     </div>
-    <div class="block mb-8 sm:flex items-center justify-end"
+    <div class="block mb-8 sm:mb-0 sm:flex items-center justify-end"
       :class="isOpen ? 'block' : 'hidden'">
       <div v-for="(item, idx) in navItems"
         :key="idx"
@@ -51,7 +51,7 @@ export default {
   name: 'Navbar',
   data() {
     return{
-      isOpen: true
+      isOpen: false
     }
   },
   components: {
