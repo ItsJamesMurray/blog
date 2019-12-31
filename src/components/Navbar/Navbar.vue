@@ -58,7 +58,7 @@ export default {
     Toggle
   },
   computed: {
-     darkMode () {
+    darkMode () {
        return this.$store.state.darkMode.darkMode
        },
     navItems () {

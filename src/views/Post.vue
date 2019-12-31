@@ -76,8 +76,8 @@ export default {
   .post p {
     margin: 1em 0;
   }
+
   .post a {
-    background-color: #bee3f8;
     text-decoration: underline;
     color: #4299e1;
     font-weight: bold;
@@ -87,7 +87,7 @@ export default {
     padding-right: .25rem;
   }
   .post a:hover {
-    color: #edf2f7;
+    background-color: #ebf8ff;
   }
   .post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
     font-weight: 700;
