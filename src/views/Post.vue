@@ -120,7 +120,7 @@ export default {
   }
   .post ul {
     padding-left: 30px;
-    list-style-type: circle;
+    list-style-type: disc;
   }
   .post ol {
     padding-left: 30px;
