@@ -1,7 +1,7 @@
 # itsjamesmurray.com
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![CircleCI](https://circleci.com/gh/ItsJamesMurray/blog.svg?style=shield)](https://circleci.com/gh/ItsJamesMurray/blog)
 
 👋James' personal website using Vue CLI, TailwindCSS, Firebase, and Airtable.
 
@@ -11,9 +11,11 @@ I've made my code open source to inspire rookie programmers like myself to start
 I built this from the Vue CLI and added Tailwind CSS for styling.  All my blog posts are written in Airtable and pulled through their super user friendly API.  The site is hosted on Firebase.
 
 ## Todo
-- [ ] Add CircleCI
+- [x] Add CircleCI
+- [ ] Add CircleCI tests
 - [x] Rework Post.vue styling for `markedPost`
 - [ ] Test on other devices
+- [ ] Create a dynamic sitemap
 - [ ] Implement dynamic rendering for Googlebot
 
 ## Contributing🤝
