@@ -10,13 +10,14 @@ I've made my code open source to inspire rookie programmers like myself to start
 
 I built this from the Vue CLI and added Tailwind CSS for styling.  All my blog posts are written in Airtable and pulled through their super user friendly API.  The site is hosted on Firebase.
 
-## Todo
+## Todo ✏️
 - [x] Add CircleCI
 - [ ] Add CircleCI tests
-- [x] Rework Post.vue styling for `markedPost`
+- [x] Rework `Post.vue` styling for `markedPost`
 - [ ] Test on other devices
 - [ ] Create a dynamic sitemap
 - [ ] Implement dynamic rendering for Googlebot
+- [ ] Create a new `BlogRoll` for the general `/blog` page to include month and year
 
 ## Contributing🤝
 If you see any typos or formatting errors in a post, or any other issue that needs to be addressed, please do not hesitate to open a pull request and fix it!
