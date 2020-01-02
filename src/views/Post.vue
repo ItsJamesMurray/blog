@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .invert {
     -webkit-filter: invert(100%);
     filter: invert(100%);
