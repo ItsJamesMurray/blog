@@ -18,6 +18,8 @@ I built this from the Vue CLI and added Tailwind CSS for styling.  All my blog p
 - [ ] Create a dynamic sitemap
 - [ ] Implement dynamic rendering for Googlebot
 - [ ] Create a new `BlogRoll` for the general `/blog` page to include month and year
+- [ ] Create `Admin.vue` for an admin section where I can write posts in the web UI.
+- [ ] Add Google Analytics data in a dash available through `Admin.vue`
 
 ## Contributing🤝
 If you see any typos or formatting errors in a post, or any other issue that needs to be addressed, please do not hesitate to open a pull request and fix it!
