@@ -33,17 +33,26 @@ export default {
       marked: marked
       }
   },
-  // metaInfo() {
-  //   return {
-  //     title: `${this.post.fields.Title} by James Murray`,
-  //     meta: [
-  //       {
-  //         name: 'description',
-  //         content: this.post.fields.Description
-  //       }
-  //     ]
-  //   }
-  // },
+  metaInfo() {
+    return {
+      title: `${this.post.fields.Title} by James Murray`,
+      titleTemplate: null,
+      meta: [
+        // Open Graph / Facebook
+        { vmid: 'og:title', property: 'og:title', content: `${this.post.fields.Title} by James Murray`},
+        { vmid: 'og:type', property: 'og:type', content: 'article'},
+        { vmid: 'og:url', property: 'og:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`},
+        { vmid: 'og:description', property: 'og:description', content: this.post.fields.Description},
+        { vmid: 'og:image', property: 'og:image', content: 'https://www.itsjamesmurray.com/img/visionary.png'},
+        // Twitter
+        { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
+        { vmid: 'twitter:url', property: 'twitter:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`},
+        { vmid: 'twitter:title', property: 'twitter:title', content: this.post.fields.Title},
+        { vmid: 'twitter:description', property: 'twitter:description', content: this.post.fields.Description},
+        { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.itsjamesmurray.com/img/visionary.png'}
+      ]
+    }
+  },
   created () {
     if(Object.keys(this.$store.state.blogPosts.selectedPost === 0)) {
       this.$store.dispatch('fetchPost', this.$route.params.post)
