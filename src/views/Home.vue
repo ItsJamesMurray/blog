@@ -74,17 +74,6 @@ export default {
     BlogRoll,
     Loading
    },
-  // metaInfo() {
-  //   return {
-  //     title: 'I am a visionary! | ItsJamesMurray',
-  //     meta: [
-  //       {
-  //         name: 'description',
-  //         content: 'Welcome to ItsJamesMurray!  I created this site as a place to fail in public. I know I want to build something great—I\'m just not quite sure I\'ve found out what yet. I\'ll be using this little corner of the internet to document my journey.'
-  //       }
-  //     ]
-  //   }
-  // },
    methods: {
      navToBlog (){
        this.$router.push({name: 'blog'})
