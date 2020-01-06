@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Meta from 'vue-meta'
+import VueMeta from 'vue-meta'
 
 Vue.use(VueRouter)
-Vue.use(Meta)
+Vue.use(VueMeta, {
+  keyName: 'metaInfo',
+  attribute: 'data-vue-meta',
+  ssrAttribute: 'data-vue-meta-server-rendered',
+  tagIDKeyName: 'vmid',
+  refreshOnceOnNavigation: true
+})
 
 const routes = [
   {

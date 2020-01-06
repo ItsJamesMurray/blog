@@ -6,7 +6,7 @@
   <div v-else-if="typeof post != undefined" class="px-12 sm:w-1/2 sm:p-0 flex-col m-auto">
     <h1 class="text-4xl mt-8 font-black">{{post.fields.Title}}</h1>
     <hr class=w-full>
-    <span>James Murray - {{moment(post.fields['Publish Date']).format('MMMM Do YYYY')}}</span><br>
+    <span>James Murray - {{dateOfPublish}}</span><br>
     <div class = "post" v-html="markedPost"> {{ markedPost }} </div><br><br>
     <img
       src="@/assets/img/jimsig.png"
@@ -31,7 +31,7 @@ export default {
     return {
       moment: moment,
       marked: marked
-      }
+    }
   },
   metaInfo() {
     return {
@@ -39,17 +39,17 @@ export default {
       titleTemplate: null,
       meta: [
         // Open Graph / Facebook
-        { vmid: 'og:title', property: 'og:title', content: `${this.post.fields.Title} by James Murray`},
-        { vmid: 'og:type', property: 'og:type', content: 'article'},
-        { vmid: 'og:url', property: 'og:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`},
-        { vmid: 'og:description', property: 'og:description', content: this.post.fields.Description},
-        { vmid: 'og:image', property: 'og:image', content: 'https://www.itsjamesmurray.com/img/visionary.png'},
+        { vmid: 'og:title', property: 'og:title', content: `${this.post.fields.Title} by James Murray` },
+        { vmid: 'og:type', property: 'og:type', content: 'article' },
+        { vmid: 'og:url', property: 'og:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}` },
+        { vmid: 'og:description', property: 'og:description', content: this.post.fields.Description },
+        { vmid: 'og:image', property: 'og:image', content: 'https://www.itsjamesmurray.com/img/visionary.png' },
         // Twitter
         { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
-        { vmid: 'twitter:url', property: 'twitter:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`},
-        { vmid: 'twitter:title', property: 'twitter:title', content: this.post.fields.Title},
-        { vmid: 'twitter:description', property: 'twitter:description', content: this.post.fields.Description},
-        { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.itsjamesmurray.com/img/visionary.png'}
+        { vmid: 'twitter:url', property: 'twitter:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}` },
+        { vmid: 'twitter:title', property: 'twitter:title', content: `${this.post.fields.Title} by James Murray`},
+        { vmid: 'twitter:description', property: 'twitter:description', content: this.post.fields.Description },
+        { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.itsjamesmurray.com/img/visionary.png' }
       ]
     }
   },
@@ -59,6 +59,9 @@ export default {
     }
   },
   computed: {
+    dateOfPublish () {
+      return moment(this.$store.state.blogPosts.selectedPost.fields['Publish Date']).format('MMMM Do YYYY')
+    },
     post () {
       return this.$store.state.blogPosts.selectedPost
     },
