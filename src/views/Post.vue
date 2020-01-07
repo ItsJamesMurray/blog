@@ -30,33 +30,39 @@ export default {
   data () {
     return {
       moment: moment,
-      marked: marked
+      marked: marked,
+      meta: {
+        title: this.$store.state.blogPosts.selectedPost.fields.Title,
+        description: this.$store.state.blogPosts.selectedPost.fields.Description,
+        slug: this.$store.state.blogPosts.selectedPost.fields['URL Slug']
+        }
     }
   },
   metaInfo() {
+    const meta = this.meta
     return {
-      title: `${this.post.fields.Title} by James Murray`,
+      title: meta ? `${meta.title} by James Murray` : 'I am a visionary - ItsJamesMurray',
       titleTemplate: null,
       meta: [
         // Open Graph / Facebook
-        { vmid: 'og:title', property: 'og:title', content: `${this.post.fields.Title} by James Murray` },
+        { vmid: 'og:title', property: 'og:title', content: meta ? `${meta.title} by James Murray` : 'I am a visionary - ItsJamesMurray' },
         { vmid: 'og:type', property: 'og:type', content: 'article' },
-        { vmid: 'og:url', property: 'og:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}` },
-        { vmid: 'og:description', property: 'og:description', content: this.post.fields.Description },
+        { vmid: 'og:url', property: 'og:url', content: meta ? `https://www.itsjamesmurray.com/blog/${meta.slug}` : 'https://www.itsjamesmurray.com/blog' },
+        { vmid: 'og:description', property: 'og:description', content: meta ? meta.description : 'I wrote a thing!' },
         { vmid: 'og:image', property: 'og:image', content: 'https://www.itsjamesmurray.com/img/visionary.png' },
         // Twitter
         { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
-        { vmid: 'twitter:url', property: 'twitter:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}` },
-        { vmid: 'twitter:title', property: 'twitter:title', content: `${this.post.fields.Title} by James Murray`},
-        { vmid: 'twitter:description', property: 'twitter:description', content: this.post.fields.Description },
+        { vmid: 'twitter:url', property: 'twitter:url', content: meta ? `https://www.itsjamesmurray.com/blog/${meta.slug}` : 'https://www.itsjamesmurray.com/blog' },
+        { vmid: 'twitter:title', property: 'twitter:title', content: meta ? `${meta.title} by James Murray` : 'I am a visionary - ItsJamesMurray' },
+        { vmid: 'twitter:description', property: 'twitter:description', content: meta ? meta.description : 'I wrote a thing!' },
         { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.itsjamesmurray.com/img/visionary.png' }
       ]
     }
   },
-  created () {
-    if(Object.keys(this.$store.state.blogPosts.selectedPost === 0)) {
-      this.$store.dispatch('fetchPost', this.$route.params.post)
-    }
+  beforeMount () {
+    const slug = this.$route.params.post
+    this.$store.dispatch('fetchPost', slug )
+      .then(() => this.$meta.refresh())
   },
   computed: {
     dateOfPublish () {
