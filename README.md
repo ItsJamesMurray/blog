@@ -1,7 +1,5 @@
 # itsjamesmurray.com
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![CircleCI](https://circleci.com/gh/ItsJamesMurray/blog.svg?style=shield)](https://circleci.com/gh/ItsJamesMurray/blog)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![CircleCI](https://circleci.com/gh/ItsJamesMurray/blog.svg?style=shield)](https://circleci.com/gh/ItsJamesMurray/blog) ![[Follow me on Twitter]](https://img.shields.io/twitter/follow/itsjamesmurray)
 
 👋James' personal website using Vue CLI, TailwindCSS, Firebase, and Airtable.
 
@@ -16,7 +14,7 @@ I built this from the Vue CLI and added Tailwind CSS for styling.  All my blog p
 - [x] Rework `Post.vue` styling for `markedPost`
 - [ ] Test on other devices
 - [ ] Create a dynamic sitemap
-- [ ] Implement dynamic rendering for Googlebot
+- [ ] Implement server side rendering
 - [ ] Create a new `BlogRoll` for the general `/blog` page to include month and year
 - [ ] Create `Admin.vue` for an admin section where I can write posts in the web UI.
 - [ ] Add Google Analytics data in a dash available through `Admin.vue`
