@@ -3,10 +3,10 @@
   <div v-if=loading>
     <Loading />
   </div>
-  <div v-else-if="typeof post != undefined" class="px-12 sm:w-1/2 sm:p-0 flex-col m-auto">
-    <h1 class="text-4xl mt-8 font-black">{{post.fields.Title}}</h1>
+  <div v-else-if="typeof postTitle != undefined" class="px-12 sm:w-1/2 sm:p-0 flex-col m-auto">
+    <h1 class="text-4xl mt-8 font-black">{{ postTitle }}</h1>
     <hr class=w-full>
-    <span>James Murray - {{moment(post.fields['Publish Date']).format('MMMM Do YYYY')}}</span><br>
+    <span>James Murray - {{ dateOfPublish }}</span><br>
     <div class = "post" v-html="markedPost"> {{ markedPost }} </div><br><br>
     <img
       src="@/assets/img/jimsig.png"
@@ -21,55 +21,72 @@
 import moment from 'moment'
 import marked from 'marked'
 import Loading from '@/components/Loading/Loading'
+import store from '@/state/store'
 
 export default {
-  name: 'blog',
+  name: 'post',
   components: {
     Loading
    },
   data () {
     return {
       moment: moment,
-      marked: marked
-      }
+      marked: marked,
+      meta: {
+        title: store.state.blogPosts.selectedPost.fields.Title,
+        description: store.state.blogPosts.selectedPost.fields.Description,
+        slug: store.state.blogPosts.selectedPost.fields['URL Slug']
+        }
+    }
   },
   metaInfo() {
+    const meta = this.meta
     return {
-      title: `${this.post.fields.Title} by James Murray`,
+      title: meta ? `${meta.title} by James Murray` : 'I am a visionary - ItsJamesMurray',
       titleTemplate: null,
       meta: [
         // Open Graph / Facebook
-        { vmid: 'og:title', property: 'og:title', content: `${this.post.fields.Title} by James Murray`},
-        { vmid: 'og:type', property: 'og:type', content: 'article'},
-        { vmid: 'og:url', property: 'og:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`},
-        { vmid: 'og:description', property: 'og:description', content: this.post.fields.Description},
-        { vmid: 'og:image', property: 'og:image', content: 'https://www.itsjamesmurray.com/img/visionary.png'},
+        { vmid: 'og:title', property: 'og:title', content: meta ? `${ meta.title } by James Murray` : 'I am a visionary - ItsJamesMurray' },
+        { vmid: 'og:type', property: 'og:type', content: 'article' },
+        { vmid: 'og:url', property: 'og:url', content: meta ? `https://www.itsjamesmurray.com/blog/${ meta.slug }` : 'https://www.itsjamesmurray.com/blog' },
+        { vmid: 'og:description', property: 'og:description', content: meta ? meta.description : 'I wrote a thing!' },
+        { vmid: 'og:image', property: 'og:image', content: 'https://www.itsjamesmurray.com/img/visionary.png' },
         // Twitter
         { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
-        { vmid: 'twitter:url', property: 'twitter:url', content: `https://www.itsjamesmurray.com/blog/${this.post.fields['URL Slug']}`},
-        { vmid: 'twitter:title', property: 'twitter:title', content: this.post.fields.Title},
-        { vmid: 'twitter:description', property: 'twitter:description', content: this.post.fields.Description},
-        { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.itsjamesmurray.com/img/visionary.png'}
+        { vmid: 'twitter:url', property: 'twitter:url', content: meta ? `https://www.itsjamesmurray.com/blog/${ meta.slug }` : 'https://www.itsjamesmurray.com/blog' },
+        { vmid: 'twitter:title', property: 'twitter:title', content: meta ? `${ meta.title } by James Murray` : 'I am a visionary - ItsJamesMurray' },
+        { vmid: 'twitter:description', property: 'twitter:description', content: meta ? meta.description : 'I wrote a thing!' },
+        { vmid: 'twitter:image', property: 'twitter:image', content: 'https://www.itsjamesmurray.com/img/visionary.png' }
       ]
     }
   },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch('fetchPost',to.params.post).then(() => {
+      next()
+    }).catch(() => {
+      next({name:'NonFound'})
+    })
+  },
   created () {
-    if(Object.keys(this.$store.state.blogPosts.selectedPost === 0)) {
-      this.$store.dispatch('fetchPost', this.$route.params.post)
+    if(store.state.blogPosts.selectedPost === undefined) {
+      this.$router.push(`/404`)
     }
   },
   computed: {
-    post () {
-      return this.$store.state.blogPosts.selectedPost
+    dateOfPublish () {
+      return moment(store.state.blogPosts.selectedPost.fields['Publish Date']).format('MMMM Do YYYY')
+    },
+    postTitle () {
+      return store.state.blogPosts.selectedPost.fields.Title
     },
     darkMode () {
-      return this.$store.state.darkMode.darkMode
+      return store.state.darkMode.darkMode
     },
     markedPost () {
-      return marked(this.$store.state.blogPosts.selectedPost.fields.Content)
+      return marked(store.state.blogPosts.selectedPost.fields.Content)
     },
     loading () {
-      return this.$store.state.blogPosts.loading
+      return store.state.blogPosts.loading
     }
   }
 }
