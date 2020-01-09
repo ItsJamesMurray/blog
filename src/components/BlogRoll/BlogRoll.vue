@@ -47,7 +47,6 @@ export default {
   methods: {
     navToPost () {
       const post = this.post
-      this.$store.commit('SELECT_POST', post)
       this.$router.push(`/blog/${post.fields['URL Slug']}`)
     }
   }

@@ -44,8 +44,8 @@ const module = {
           .then(r => r.data.records)
           .then(blogPost => {
             commit('SELECT_POST', blogPost[0])
+            resolve()
           })
-          resolve()
       })
     }
   },
@@ -55,13 +55,7 @@ const module = {
       state.loading = false
     },
     SELECT_POST: (state, post) => {
-      if(post !== undefined) {
-        state.selectedPost = post
-        // state.error = false
-      } else {
-        // state.error = true
-        this.$router.push('/404')
-      }
+      state.selectedPost = post
       state.loading = false
     }
   }
