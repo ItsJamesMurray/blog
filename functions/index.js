@@ -32,6 +32,7 @@ exports.ssr = functions.https.onRequest( async (request, response) => {
   ];
 
   const userAgent = String(request.headers['user-agent']);
+  console.log(`Request from ${userAgent}`)
 
   const isBot = bots.filter(bot => userAgent.toLowerCase().includes(bot)).length;
 
