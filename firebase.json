@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/sitemap",
+        "function": "sitemap"
+      },
+      {
         "source": "**",
         "function": "ssr"
       }
