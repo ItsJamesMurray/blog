@@ -4,7 +4,9 @@ const puppeteer = require('puppeteer')
 const renderer = require('./renderer')
 const fetch = require('node-fetch')
 const express = require('express')
-// const axios = require('axios')
+const cors = require('cors')({ origin: true })
+
+const axios = require('axios')
 
 const blogURL = 'https://itsjamesmurray-blog.firebaseapp.com';
 const renderURL = 'https://us-central1-itsjamesmurray-blog.cloudfunctions.net/render';
@@ -60,35 +62,56 @@ exports.ssr = functions.https.onRequest( async (request, response) => {
 //     'https://www.itsjamesmurray.com/blog',
 //     'https://www.itsjamesmurray.com/contact'
 //   ]
+//   return new Promise (resolve => {
+//     axios.get(`https://api.airtable.com/v0/${baseKey}/Blog%20Posts`, {
+//       headers: {
+//         'Authorization': `Bearer ${apiKey}`
+//       },
+//       params: {
+//         view: 'Published Posts'
+//       }
+//     })
+//     .then(r => r.data.records)
+//     .then(blogPosts => {
+//       for ( let i=0; i<blogPosts.length; i++ ) {
+//           urls.push(`https://www.itsjamesmurray.com/blog/${blogPosts[i].fields['URL Slug']}`)
+//       }
+//       resolve(urls)
+//       // return urls
 
-//   axios.get(`https://api.airtable.com/v0/${baseKey}/Blog%20Posts`, {
-//     headers: {
-//       'Authorization': `Bearer ${apiKey}`
-//     },
-//     params: {
-//       view: 'Published Posts'
-//     }
-//   })
-//   .then(r => r.data.records)
-//   .then(blogPosts => {
-//     for ( let i=0; i<blogPosts.length; i++ ) {
-//         urls.push(`https://www.itsjamesmurray.com/blog/${blogPosts[i].fields['URL Slug']}`)
-//     }
-//     return urls
+//     })
 //   })
 // }
 
-
 const app = express()
-app.get('/sitemap', (request, response) => {
-  let urls = [
-    'https://www.itsjamesmurray.com',
-    'https://www.itsjamesmurray.com/blog',
-    'https://www.itsjamesmurray.com/contact'
-  ]
+app.use(cors)
+app.get('/sitemap', async (request, response) => {
   let sitemap = []
 
-  // getPost somewhere here
+  const urls = await new Promise (resolve => {
+    let urlList = [
+      'https://www.itsjamesmurray.com',
+      'https://www.itsjamesmurray.com/blog',
+      'https://www.itsjamesmurray.com/contact'
+    ]
+    axios.get(`https://api.airtable.com/v0/${functions.config().airtable.base}/Blog%20Posts`, {
+      headers: {
+        'Authorization': `Bearer ${functions.config().airtable.apikey}`
+      },
+      params: {
+        view: 'Published Posts'
+      }
+    })
+    .then(r => r.data.records)
+    .then(blogPosts => {
+      for ( let i=0; i<blogPosts.length; i++ ) {
+        urlList.push(`https://www.itsjamesmurray.com/blog/${blogPosts[i].fields['URL Slug']}`)
+      }
+      resolve(urlList)
+    })
+    .catch((e) => console.log(e))
+  })
+
   for (let i = 0; i < urls.length; i++) {
     sitemap.push(`
     <url>
