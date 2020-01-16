@@ -1,14 +1,25 @@
 import axios from 'axios'
-
 const module = {
   state: {
     blogPosts: {},
     selectedPost: {},
     // error: false,
-    loading: true
+    loading: false
+  },
+  mutations: {
+    LOAD_POSTS: (state, blogPosts) => {
+      state.blogPosts = blogPosts
+    },
+    SELECT_POST: (state, post) => {
+      state.selectedPost = post
+    },
+    SET_LOADING_FLAG: (state, flag) => {
+      state.loading = flag
+    }
   },
   actions: {
     loadPosts({ commit }) {
+      commit('SET_LOADING_FLAG', true)
       const baseKey = process.env.VUE_APP_AIRTABLE_BASE
       const apiKey = process.env.VUE_APP_AIRTABLE_API
       axios
@@ -21,12 +32,17 @@ const module = {
             view: 'Published Posts'
           }
         })
-        .then(r => r.data.records)
-        .then(blogPosts => {
-          commit('LOAD_POSTS', blogPosts)
+        .then(resp => {
+          commit('LOAD_POSTS', resp.data.records)
+          commit('SET_LOADING_FLAG', false)
+        })
+        .catch(err => {
+          commit('SET_LOADING_FLAG', false)
+          throw err
         })
     },
     fetchPost({commit}, params) {
+      commit('SET_LOADING_FLAG', true)
       const baseKey = process.env.VUE_APP_AIRTABLE_BASE
       const apiKey = process.env.VUE_APP_AIRTABLE_API
       return new Promise((resolve) => {
@@ -41,24 +57,17 @@ const module = {
               filterByFormula: `AND({URL Slug} = '${params}')`
             }
           })
-          .then(r => r.data.records)
-          .then(blogPost => {
-            commit('SELECT_POST', blogPost[0])
+          .then(resp => {
+            commit('SELECT_POST', resp.data.records[0])
+            commit('SET_LOADING_FLAG', false)
             resolve()
+          })
+          .catch(err => {
+            commit('SET_LOADING_FLAG', false)
+            throw err
           })
       })
     }
-  },
-  mutations: {
-    LOAD_POSTS: (state, blogPosts) => {
-      state.blogPosts = blogPosts
-      state.loading = false
-    },
-    SELECT_POST: (state, post) => {
-      state.selectedPost = post
-      state.loading = false
-    }
   }
 }
-
 export default module

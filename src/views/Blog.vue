@@ -25,17 +25,6 @@ export default {
     BlogRoll,
     Loading
    },
-  // metaInfo() {
-  //   return {
-  //     title: `${this.post.fields.Title} by James Murray`,
-  //     meta: [
-  //       {
-  //         name: 'description',
-  //         content: this.post.fields.Description
-  //       }
-  //     ]
-  //   }
-  // },
   computed: {
     loading () {
       return this.$store.state.blogPosts.loading
