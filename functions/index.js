@@ -3,6 +3,10 @@ const functions = require('firebase-functions')
 const puppeteer = require('puppeteer')
 const renderer = require('./renderer')
 const fetch = require('node-fetch')
+const express = require('express')
+const cors = require('cors')({ origin: true })
+
+const axios = require('axios')
 
 const blogURL = 'https://itsjamesmurray-blog.firebaseapp.com';
 const renderURL = 'https://us-central1-itsjamesmurray-blog.cloudfunctions.net/render';
@@ -32,26 +36,98 @@ exports.ssr = functions.https.onRequest( async (request, response) => {
   ];
 
   const userAgent = String(request.headers['user-agent']);
-  console.log(`Request from ${userAgent}`)
 
   const isBot = bots.filter(bot => userAgent.toLowerCase().includes(bot)).length;
 
   const requestURL = blogURL + request.url;
-  console.log(`Request URL is: ${requestURL}`)
 
   const options = {timeout: 0}
 
   if (isBot) {
-    console.log('Bot recognized')
     const html = await fetch(`${renderURL}?requestURL=${requestURL}`, options);
     const body = await html.text();
     response.send(body.toString());
-    console.log(`BOT BODY: ${body.toString()}`)
   } else {
-    console.log('User recognized')
     const html = await fetch(blogURL);
     const body = await html.text();
     response.send(body.toString());
-    console.log(`USER BODY: ${body.toString()}`)
   }
 });
+
+// function getPosts () {
+//   const baseKey = functions.config().airtable.base
+//   const apiKey = functions.config().airtable.apikey
+//   const urls = [
+//     'https://www.itsjamesmurray.com',
+//     'https://www.itsjamesmurray.com/blog',
+//     'https://www.itsjamesmurray.com/contact'
+//   ]
+//   return new Promise (resolve => {
+//     axios.get(`https://api.airtable.com/v0/${baseKey}/Blog%20Posts`, {
+//       headers: {
+//         'Authorization': `Bearer ${apiKey}`
+//       },
+//       params: {
+//         view: 'Published Posts'
+//       }
+//     })
+//     .then(r => r.data.records)
+//     .then(blogPosts => {
+//       for ( let i=0; i<blogPosts.length; i++ ) {
+//           urls.push(`https://www.itsjamesmurray.com/blog/${blogPosts[i].fields['URL Slug']}`)
+//       }
+//       resolve(urls)
+//       // return urls
+
+//     })
+//   })
+// }
+
+const app = express()
+app.use(cors)
+app.get('/sitemap', async (request, response) => {
+  let sitemap = []
+
+  const urls = await new Promise (resolve => {
+    let urlList = [
+      'https://www.itsjamesmurray.com',
+      'https://www.itsjamesmurray.com/blog',
+      'https://www.itsjamesmurray.com/contact'
+    ]
+    axios.get(`https://api.airtable.com/v0/${functions.config().airtable.base}/Blog%20Posts`, {
+      headers: {
+        'Authorization': `Bearer ${functions.config().airtable.apikey}`
+      },
+      params: {
+        view: 'Published Posts'
+      }
+    })
+    .then(r => r.data.records)
+    .then(blogPosts => {
+      for ( let i=0; i<blogPosts.length; i++ ) {
+        urlList.push(`https://www.itsjamesmurray.com/blog/${blogPosts[i].fields['URL Slug']}`)
+      }
+      resolve(urlList)
+    })
+    .catch((e) => console.log(e))
+  })
+
+  for (let i = 0; i < urls.length; i++) {
+    sitemap.push(`
+    <url>
+      <loc>${urls[i]}</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    `)
+  }
+
+  response.set('Content-Type', 'application/xml')
+  response.send(`
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    ${sitemap.join('')}
+  </urlset>
+  `)
+})
+
+exports.sitemap = functions.https.onRequest(app)
