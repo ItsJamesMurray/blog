@@ -12,28 +12,28 @@ const routes = [
     path: '/',
     name: 'home',
     components: {
-      default: () => import('@/views/Home.vue')
+      default: () => import('@/components/Home/Home.vue')
     }
   },
   {
     path: '/contact',
     name: 'contact',
     components: {
-      default: () => import('@/views/Contact.vue')
+      default: () => import('@/components/Contact/Contact.vue')
     }
   },
   {
     path: '/blog',
     name: 'blog',
     components: {
-      default: () => import('@/views/Blog.vue')
+      default: () => import('@/components/Blog/Blog.vue')
     }
   },
   {
     path: '/blog/:post',
     name: 'post',
     components: {
-      default: () => import('@/views/Post.vue')
+      default: () => import('@/components/Post/Post.vue')
     },
     props: true
   },

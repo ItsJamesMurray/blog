@@ -48,7 +48,7 @@
 import Toggle from '@/components/Toggle/Toggle'
 
 export default {
-  name: 'Navbar',
+  name: 'AppNav',
   data() {
     return{
       isOpen: false
