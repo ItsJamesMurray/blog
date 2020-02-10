@@ -2,7 +2,7 @@
   <div id="view-default">
       <AppNav />
       <router-view
-        class="pt-12 min-h-screen"
+        class="min-h-screen"
         :class="darkMode ? 'bg-gray-800 text-gray-200':''"
         name="default"
       />
