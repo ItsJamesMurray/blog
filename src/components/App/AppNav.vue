@@ -20,10 +20,10 @@
       </button>
     </div>
     <div class="block mb-8 sm:mb-0 sm:flex items-center justify-end"
-      :class="isOpen ? 'block' : 'hidden'">
+      :class="isOpen ? 'flex-row h-screen' : 'hidden'">
       <div v-for="(item, idx) in navItems"
         :key="idx"
-        :class="[darkMode ? 'nav-transition-dark' : 'nav-transition-light', isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : '' ]"
+        :class="[darkMode ? 'nav-transition-dark' : 'nav-transition-light', isOpen ? 'my-12 text-4xl' : '' ]"
         class="nav-transition sm:pl-4  m-auto"
         @click="isOpen = false">
         <router-link :to="item.routePath" class="flex justify-center py-2" >
@@ -33,7 +33,7 @@
       <div v-for="(link, idx) in navLinkItems"
         :key="idx+100"
         class="text-3xl sm:pl-4  m-auto"
-        :class="isOpen ? 'mb-2 bg-gray-600 px-2 rounded h-12' : ''"
+        :class="isOpen ? 'my-12 text-4xl' : ''"
         @click="isOpen = false">
         <a :href="link.url" target="_blank" class="flex justify-center">
           {{ link.img }}
@@ -48,7 +48,7 @@
 import Toggle from '@/components/Toggle/Toggle'
 
 export default {
-  name: 'Navbar',
+  name: 'AppNav',
   data() {
     return{
       isOpen: false

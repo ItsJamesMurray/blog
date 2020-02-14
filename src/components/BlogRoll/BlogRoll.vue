@@ -20,7 +20,8 @@
           <div v-for="(indicator, idx) in post.fields.Indicator"
             :key=idx+10
             class="rounded mx-2 p-2 text-xs sm:text-sm truncate  font-bold shadow-lg text-left"
-            :class="darkMode ? 'bg-yellow-500 text-gray-900':'bg-yellow-200 text-yellow-700'">
+            :class="darkMode ? 'bg-yellow-500 text-gray-900':'bg-yellow-200 text-yellow-700'"
+            :style="colors(indicator)">
             {{ indicator }}
           </div>
         </div>
@@ -48,7 +49,17 @@ export default {
     navToPost () {
       const post = this.post
       this.$router.push(`/blog/${post.fields['URL Slug']}`)
-    }
+    },
+    colors (val) {
+      // TODO: WRITE YOUR TAILWIND CONFIG
+      const colorMap = new Map()
+      colorMap.set('new', '#48bb78')
+        .set('editor choice', '#667eea')
+        .set('hot', '#f56565')
+      const str = val.toLowerCase()
+      const color = colorMap.get(str)
+      return `backgroundColor:${color};color:white;`
+    },
   }
 }
 </script>

@@ -17,7 +17,7 @@
 </template>
 <script>
 export default {
-  name: 'Footer',
+  name: 'AppFooter',
   components: {},
   computed: {
     darkMode () {

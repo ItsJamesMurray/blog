@@ -1,17 +1,16 @@
 <template>
-  <div id="app" class="">
-    <Navbar />
-    <router-view
-      class="pt-12 min-h-screen"
-      :class="darkMode ? 'bg-gray-800 text-gray-200':''"
-      />
-    <Footer />
+  <div id="app">
+    <component
+      :is="view"
+      id="app-main"
+    >
+      <router-view />
+    </component>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar/Navbar'
-import Footer from '@/components/Footer/Footer'
+const defaultView = 'ViewDefault'
 
 export default {
   name: 'App',
@@ -25,18 +24,9 @@ export default {
       ]
     }
   },
-  components: {
-    Navbar,
-    Footer
-  },
   computed: {
-    darkMode () {
-      return this.$store.state.darkMode.darkMode
-    }
-  },
-  created() {
-    if(Object.keys(this.$store.state.blogPosts.blogPosts === 0)) {
-      this.$store.dispatch('loadPosts')
+    view () {
+      return (this.$route.meta.view || defaultView)
     }
   }
 }
