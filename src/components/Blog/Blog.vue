@@ -3,11 +3,11 @@
   <div v-if=loading>
     <Loading />
   </div>
-  <div v-else class="w-3/4 flex-col m-auto">
+  <div v-else class="px-12 w-full sm:w-10/12 sm:p-0 flex-col m-auto">
     <h2 class="text-3xl font-black pt-8">All Posts:</h2>
     <BlogRoll
       v-for="(post, idx) in posts"
-      :key="idx+100"
+      :key="idx"
       :post="post"
     />
   </div>
