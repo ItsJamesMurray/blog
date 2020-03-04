@@ -15,6 +15,7 @@ I built this from the Vue CLI and added Tailwind CSS for styling.  All my blog p
 - [x] Test on other devices
 - [x] Create a dynamic sitemap
 - [x] Implement server side rendering
+- [x] Update styling for codeblocks
 - [ ] Create a new `BlogRoll` for the general `/blog` page to include month and year
 - [ ] Create `Admin.vue` for an admin section where I can write posts in the web UI.
 - [ ] Add Google Analytics data in a dash available through `Admin.vue`
