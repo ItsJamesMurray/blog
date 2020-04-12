@@ -163,34 +163,34 @@ export default {
     margin: 0 2px;
     padding: 0 5px;
     white-space: nowrap;
-    /* border: 1px solid #eaeaea; */
-    /* background-color: #f8f8f8; */
-    /* border-radius: 3px; */
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px;
     font-family: Courier, monospace;
     font-size: 12px;
-    /* color: #333333; */
+    color: #333333;
   }
   ::v-deep pre > code {
     margin: 0;
     padding: 0;
     white-space: pre;
-    /* border: none; */
-    /* background: transparent; */
+    border: none;
+    background: transparent;
   }
   ::v-deep pre {
-    /* background-color: #f8f8f8; */
+    background-color: #f8f8f8;
     border: 1px solid #ccc;
     font-size: 14px;
     line-height: 19px;
     overflow: auto;
     padding: 6px 10px;
-    /* border-radius: 3px; */
+    border-radius: 3px;
     margin: 26px 0;
   }
-  /* ::v-deep pre code, ::v-deep pre tt {
+  ::v-deep pre code, ::v-deep pre tt {
     background-color: transparent;
     border: none;
-  } */
+  }
   ::v-deep sub {
     vertical-align: sub;
     top: -1px;
