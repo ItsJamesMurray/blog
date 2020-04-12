@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.19.1",
+    "chromium": "^2.1.2",
     "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
