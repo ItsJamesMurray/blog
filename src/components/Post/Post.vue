@@ -3,7 +3,7 @@
   <div v-if=loading>
     <Loading />
   </div>
-  <div v-else-if="typeof postTitle != undefined" class="px-12 w-full sm:w-3/4 sm:p-0 flex-col m-auto">
+  <div v-else-if="typeof postTitle != undefined" class="px-12 w-full sm:w-1/2 sm:p-0 flex-col m-auto">
     <h1 class="text-4xl mt-8 font-black">{{ postTitle }}</h1>
     <span>James Murray - {{ dateOfPublish }}</span><br>
     <MarkdownDisplay :markdown="content" />

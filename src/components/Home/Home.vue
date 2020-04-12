@@ -1,8 +1,6 @@
 <template>
   <div class="flex-row">
-    <div
-      :class="darkMode ? 'text-gray-200 bg-gray-700':'bg-blue-100'"
-      class="flex justify-center pt-8">
+    <div class="flex justify-center pt-8">
       <div v-if="loading" class="h-screen">
         <Loading />
       </div>
