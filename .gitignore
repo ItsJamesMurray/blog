@@ -1,6 +1,10 @@
 .DS_Store
 node_modules
 /dist
+/.firebase
+/.circleci
+.firebaserc
+.eslinttc.js
 
 # local env files
 .env.local
