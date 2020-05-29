@@ -4,7 +4,8 @@ node_modules
 .firebase
 .circleci
 .firebaserc
-.eslinttc.js
+.eslintrc.js
+.browserslistrc
 
 # local env files
 .env.local
