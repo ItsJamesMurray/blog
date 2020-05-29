@@ -54,35 +54,6 @@ exports.ssr = functions.https.onRequest( async (request, response) => {
   }
 });
 
-// function getPosts () {
-//   const baseKey = functions.config().airtable.base
-//   const apiKey = functions.config().airtable.apikey
-//   const urls = [
-//     'https://www.itsjamesmurray.com',
-//     'https://www.itsjamesmurray.com/blog',
-//     'https://www.itsjamesmurray.com/contact'
-//   ]
-//   return new Promise (resolve => {
-//     axios.get(`https://api.airtable.com/v0/${baseKey}/Blog%20Posts`, {
-//       headers: {
-//         'Authorization': `Bearer ${apiKey}`
-//       },
-//       params: {
-//         view: 'Published Posts'
-//       }
-//     })
-//     .then(r => r.data.records)
-//     .then(blogPosts => {
-//       for ( let i=0; i<blogPosts.length; i++ ) {
-//           urls.push(`https://www.itsjamesmurray.com/blog/${blogPosts[i].fields['URL Slug']}`)
-//       }
-//       resolve(urls)
-//       // return urls
-
-//     })
-//   })
-// }
-
 const app = express()
 app.use(cors)
 app.get('/sitemap', async (request, response) => {
