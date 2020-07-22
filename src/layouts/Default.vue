@@ -91,7 +91,18 @@ export default {
     isHome() {
       return this.$route.name === 'home'
     }
-  }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.updateScroll)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.updateScroll)
+  },
+  methods: {
+    updateScroll () {
+      this.scrollPosition = window.scrollY
+    }
+  },
 }
 </script>
 
