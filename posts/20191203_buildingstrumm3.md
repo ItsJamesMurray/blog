@@ -1,7 +1,7 @@
 ---
 title: "Building Strumm: Setting Up Google Maps API and Airtable API"
 slug: "building-strumm-setting-up-google-maps-api-and-airtable-api"
-description: ""
+description: "Now I am using an API!  Using both Airtable's API and a vue package for Google Maps' API I started implementing some of the backend code.Strumm is my first project that I am coding and it helps people learn guitar by connecting them to local instructors."
 date: 2019-12-03
 ---
 ## What we are trying to do:

@@ -5,7 +5,7 @@
       <div class="flex flex-col justify-center">
         <g-link class="border-solid border-4 border-white text-white text-center font-bold py-2 my-2 rounded hover:bg-white hover:text-gray-800" to="/about">About</g-link>
         <g-link class="border-solid border-4 border-white text-white text-center font-bold py-2 my-2 rounded hover:bg-white hover:text-gray-800" to="/blog">Blog</g-link>
-        <g-link class="border-solid border-4 border-white text-white text-center font-bold py-2 my-2 rounded hover:bg-white hover:text-gray-800" to="/contact">Contact</g-link>
+        <g-link class="border-solid border-4 border-white text-white text-center font-bold py-2 my-2 rounded hover:bg-white hover:text-gray-800" to="/newsletter">Newsletter</g-link>
         <g-link class="border-solid border-4 border-white text-white text-center font-bold py-2 my-2 rounded hover:bg-white hover:text-gray-800" to="/around">Find me on the Web</g-link>
       </div>
     </div>
@@ -15,7 +15,7 @@
 <script>
 export default {
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'I am a visionary!'
   }
 }
 </script>

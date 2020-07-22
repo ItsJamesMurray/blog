@@ -1,7 +1,7 @@
 ---
 title: "The 2010s: A Decade in Review"
 slug: "the-2010s-a-decade-in-review"
-description: ""
+description: "With the decade wrapping up, I wanted to spend some time reflecting on the past few years.  I grew a ton.  I am proud of myself and the progress I’ve made, but I know I want to do so much more.  I am so excited to see what the 2020s will bring."
 date: 2019-12-27
 ---
 

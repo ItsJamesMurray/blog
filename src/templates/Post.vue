@@ -21,12 +21,35 @@ query Post ($path: String!) {
    post: post (path: $path) {
     id
     title
+    description
     content
     timeToRead
     date (format: "YYYY-MM-DD")
   }
 }
 </page-query>
+
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: this.$page.post.title,
+      meta: [
+        {
+          vmid: 'description',
+          name: 'description',
+          content: this.$page.post.description,
+        },
+        {
+          vmid: 'og:description',
+          name: 'og:description',
+          content: this.$page.post.description,
+        }
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped>
 .markdown {

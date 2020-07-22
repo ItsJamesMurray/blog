@@ -13,7 +13,7 @@ export default {
     PostList,
   },
   metaInfo: {
-    title: "TESTING"
+    title: "Blog Posts"
   },
   computed: {
     years() {

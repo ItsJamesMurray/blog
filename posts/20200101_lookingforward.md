@@ -1,7 +1,7 @@
 ---
 title: "Looking Forward to 2020"
 slug: "looking-forward-to-2020"
-description: ""
+description: "2020 is my year.  Let's start hashing out some plans."
 date: 2020-01-01
 ---
 

@@ -22,6 +22,14 @@ module.exports = {
           ]
         }
       }
+    },
+    {
+      use: 'gridsome-plugin-gtm',
+      options: {
+        id: 'GTM-KVR2T5G',
+        enabled: true,
+        debug: false
+      }
     }
   ]
 }

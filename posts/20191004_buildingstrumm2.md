@@ -1,7 +1,7 @@
 ---
 title: "Building Strumm: Setting Up and Making a NavBar"
 slug: "building-strumm-setting-up-and-making-a-navbar"
-description: ""
+description: "A navigation bar is super basic... so I started my project there. Strumm is my first project that I am coding and it helps people learn guitar by connecting them to local instructors. "
 date: 2019-10-04
 ---
 

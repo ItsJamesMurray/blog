@@ -1,8 +1,8 @@
 ---
 title: "Building Strumm: Updates from 4 months in"
-description: "The first post written in Markdown"
-date: 2020-02-19
 slug: "building-strumm-updates-from-4-months-in"
+description: "A lot has changed since the last update.  I'm starting to get it to a position where I might be able to launch soon."
+date: 2020-02-19
 ---
 
 [I recently read that 90% of beginner guitar players give up within a year, according to Fender.](https://www.musicradar.com/amp/news/90-of-beginner-guitar-players-give-up-within-a-year-says-fender) That is crazy!

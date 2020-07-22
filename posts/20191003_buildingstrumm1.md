@@ -1,7 +1,7 @@
 ---
 title: "Building Strumm: My First Vue App"
 slug: "building-strumm-my-first-vue-app"
-description: ""
+description: "I started with React, but React sucks.  Strumm is my first project that I am coding and it helps people learn guitar by connecting them to local instructors."
 date: 2019-10-03
 ---
 

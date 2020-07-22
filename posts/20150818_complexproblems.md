@@ -1,7 +1,7 @@
 ---
 title: "Complex Problems and Simple Solutions"
 slug: "complex-problems-and-simple-solutions"
-description: ""
+description: "How do you keep an organization motivated and committed? This is a question that I had to ask myself when I was in a leadership role within one of the largest cross-discipline student groups at my undergrad campus. It ends up the answer was **simple**, but I took an analytical, high-tech, approach to find the simple, low-tech, answer."
 date: 2015-08-18
 ---
 

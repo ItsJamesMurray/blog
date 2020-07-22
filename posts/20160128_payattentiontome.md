@@ -1,8 +1,8 @@
 ---
 title: "Pay Attention to Me: The Role of Optimal Distinctiveness Theory in Whistleblowing"
 slug: "pay-attention-to-me"
-description: ""
-date: 2016-28-01
+description: "What do you do when you no longer feel a personal sense of uniqueness?  After meeting 'Not James' I wanted to explore this question further, specifically on the likelihood of whistleblowing."
+date: 2016-01-28
 ---
 
 ## Introduction
