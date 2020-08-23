@@ -52,7 +52,7 @@ export default {
         {
           vmid: 'og:image',
           property: 'og:image',
-          content: 'https://www.itsjamesmurray.com/assets/visionary.png'
+          content: 'https://www.itsjamesmurray.com/visionary.png'
         },
         {
           vmid: 'twitter:card',
@@ -77,7 +77,7 @@ export default {
         {
           vmid: 'twitter:image',
           property: 'twitter:image',
-          content: 'https://www.itsjamesmurray.com/assets/visionary.png'
+          content: 'https://www.itsjamesmurray.com/visionary.png'
         }
       ]
     }
